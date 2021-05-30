@@ -4,7 +4,7 @@ import 'package:uas/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:uas/sign_in.dart';
-//import 'package:uas/first_screen.dart';
+import 'package:uas/first_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -208,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
               .handleSignInEmail(emailController.text, passwordController.text)
               .then((User user) {
             Navigator.push(context,
-                new MaterialPageRoute(builder: (context) => new EmailPage()));
+                new MaterialPageRoute(builder: (context) => new FirstScreen()));
           }).catchError((e) => print(e));
         },
         child: Text(

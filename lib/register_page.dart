@@ -3,6 +3,7 @@ import 'package:uas/auth.dart';
 import 'package:uas/login_page.dart';
 //import 'package:uas/profil_page.dart';
 import 'package:flutter/material.dart';
+import 'package:uas/first_screen.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -202,7 +203,7 @@ class _RegisterPageState extends State<RegisterPage> {
               .handleSignUp(emailController.text, passwordController.text) //auth handler pada auth.dart
               .then((User user) {
             Navigator.push(context,
-                new MaterialPageRoute(builder: (context) => new EmailPage()));
+                new MaterialPageRoute(builder: (context) => new FirstScreen()));
           }).catchError((e) => print(e));
         },
         child: Text(
