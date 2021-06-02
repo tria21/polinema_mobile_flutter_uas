@@ -1,5 +1,5 @@
 import 'package:uas/kategori_page.dart';
-// import 'package:uas/book.dart';
+import 'package:uas/book_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +21,10 @@ class FirstScreen extends StatelessWidget {
               color: Colors.red[300],
               child: Text("Book", style: TextStyle(fontSize: 20)),
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Book()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookPage()),
+                );
               },
             ),
           ),
