@@ -5,9 +5,9 @@ class BookCard extends StatelessWidget {
   final String author;
   final String sinopsis;
   //// Pointer to Update Function
-  final Function? onUpdate;
+  final Function onUpdate;
   //// Pointer to Delete Function
-  final Function? onDelete;
+  final Function onDelete;
 
   BookCard(this.title, this.author, this.sinopsis, { this.onUpdate, this.onDelete});
 
@@ -66,8 +66,8 @@ class BookCard extends StatelessWidget {
                       color: Colors.white,
                     )),
                     onPressed: () {
-                      // if (onUpdate != null) onUpdate!();
-                      onUpdate!();
+                       if (onUpdate != null) onUpdate();
+                      //onUpdate!();
                     }),
               ),
               SizedBox(
@@ -82,8 +82,8 @@ class BookCard extends StatelessWidget {
                       color: Colors.white,
                     )),
                     onPressed: () {
-                      // if (onDelete != null) onDelete!();
-                      onDelete!();
+                      if (onDelete != null) onDelete();
+                      //onDelete!();
                     }),
               )
             ],

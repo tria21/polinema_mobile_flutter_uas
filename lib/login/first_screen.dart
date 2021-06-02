@@ -1,4 +1,4 @@
-// import 'package:uas/kategori.dart';
+import 'package:uas/kategori_page.dart';
 // import 'package:uas/book.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +36,10 @@ class FirstScreen extends StatelessWidget {
               color: Colors.red[300],
               child: Text("Kategori", style: TextStyle(fontSize: 20)),
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Kategori()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => KategoriPage()),
+                );
               },
             ),
           ),

@@ -4,9 +4,9 @@ class KategoriCard extends StatelessWidget {
   final String title;
   final String description;
   //// Pointer to Update Function
-  final Function? onUpdate;
+  final Function onUpdate;
   //// Pointer to Delete Function
-  final Function? onDelete;
+  final Function onDelete;
 
   KategoriCard(this.title, this.description, { this.onUpdate, this.onDelete});
 
@@ -57,8 +57,8 @@ class KategoriCard extends StatelessWidget {
                       color: Colors.white,
                     )),
                     onPressed: () {
-                      // if (onUpdate != null) onUpdate!();
-                      onUpdate!();
+                      if (onUpdate != null) onUpdate();
+                      //onUpdate!();
                     }),
               ),
               SizedBox(
@@ -73,8 +73,8 @@ class KategoriCard extends StatelessWidget {
                       color: Colors.white,
                     )),
                     onPressed: () {
-                      // if (onDelete != null) onDelete!();
-                      onDelete!();
+                      if (onDelete != null) onDelete();
+                      //onDelete!();
                     }),
               )
             ],
