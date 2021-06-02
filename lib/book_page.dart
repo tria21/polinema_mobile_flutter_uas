@@ -1,17 +1,19 @@
-import 'package:uas/kategori_card.dart';
+import 'package:uas/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
 class KategoriPage extends StatelessWidget {
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController bookTitleController = TextEditingController();
+  final TextEditingController authorController = TextEditingController();
+  final TextEditingController sinopsisController = TextEditingController();
   CollectionReference _pengguna =
       FirebaseFirestore.instance.collection('pengguna');
 
   void clearInputText() {
-    titleController.text = "";
-    descriptionController.text = "";
+    bookTitleController.text = "";
+    authorController.text = "";
+    sinopsisController.text = "";
   }
   
   @override
@@ -49,9 +51,9 @@ class KategoriPage extends StatelessWidget {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
-                              controller: titleController,
+                              controller: bookTitleController,
                               decoration: InputDecoration(
-                                  hintText: "Isi Nama Kategori",
+                                  hintText: "Isi Judul Buku",
                                   hintStyle: TextStyle(
                                       color: Colors.grey,
                                       fontWeight: FontWeight.w600,
@@ -62,9 +64,23 @@ class KategoriPage extends StatelessWidget {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
-                              controller: descriptionController,
+                              controller: authorController,
                               decoration: InputDecoration(
-                                  hintText: "Isi Deskripsi Kategori",
+                                  hintText: "Isi Nama Author",
+                                  hintStyle: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16)),
+                              keyboardType: TextInputType.number,
+                            ),
+                            TextField(
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16),
+                              controller: sinopsisController,
+                              decoration: InputDecoration(
+                                  hintText: "Isi Sinopsis",
                                   hintStyle: TextStyle(
                                       color: Colors.grey,
                                       fontWeight: FontWeight.w600,
@@ -91,8 +107,9 @@ class KategoriPage extends StatelessWidget {
                             onPressed: () async {
                               // TODO 1 ADD DATA HERE
                               await _pengguna.add({
-                                "title": titleController.text,
-                                "description": descriptionController.text
+                                "title": bookTitleController.text,
+                                "author": authorController.text,
+                                "sinopsis": sinopsisController.text
                               });
                               clearInputText();
                             }),
@@ -129,13 +146,14 @@ class KategoriPage extends StatelessWidget {
                     builder: (buildContext, snapshot) {
                       return Column(
                         children: snapshot.data.docs
-                            .map((e) => KategoriCard(
+                            .map((e) => BookCard(
                                   e.data()['title'],
-                                  e.data()['description'],
+                                  e.data()['auhtor'],
+                                  e.data()['sinopsis'],
                                   onUpdate: () {
                                     _pengguna
                                         .doc(e.id)
-                                        .update({"description": descriptionController.text});
+                                        .update({"author": authorController.text});
                                   },
                                   onDelete: () {
                                     _pengguna.doc(e.id).delete();
