@@ -1,4 +1,4 @@
-import 'package:uas/book_card.dart';
+import 'package:uas/contoh_sederhana/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -6,14 +6,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class BookPage extends StatelessWidget {
   final TextEditingController bookTitleController = TextEditingController();
   final TextEditingController authorController = TextEditingController();
-  final TextEditingController sinopsisController = TextEditingController();
-  CollectionReference _pengguna =
-      FirebaseFirestore.instance.collection('pengguna');
+  //final TextEditingController sinopsisController = TextEditingController();
+  CollectionReference _book =
+      FirebaseFirestore.instance.collection('book');
 
   void clearInputText() {
     bookTitleController.text = "";
     authorController.text = "";
-    sinopsisController.text = "";
+    //sinopsisController.text = "";
   }
   
   @override
@@ -71,22 +71,20 @@ class BookPage extends StatelessWidget {
                                       color: Colors.grey,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16)),
-                              keyboardType: TextInputType.number,
                             ),
-                            TextField(
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                              controller: sinopsisController,
-                              decoration: InputDecoration(
-                                  hintText: "Isi Sinopsis",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16)),
-                              keyboardType: TextInputType.number,
-                            ),
+                            // TextField(
+                            //   style: TextStyle(
+                            //       color: Colors.black,
+                            //       fontWeight: FontWeight.w600,
+                            //       fontSize: 16),
+                            //   controller: sinopsisController,
+                            //   decoration: InputDecoration(
+                            //       hintText: "Isi Sinopsis",
+                            //       hintStyle: TextStyle(
+                            //           color: Colors.grey,
+                            //           fontWeight: FontWeight.w600,
+                            //           fontSize: 16)),
+                            // ),
                           ],
                         ),
                       ),
@@ -106,10 +104,10 @@ class BookPage extends StatelessWidget {
                             ),
                             onPressed: () async {
                               // TODO 1 ADD DATA HERE
-                              await _pengguna.add({
+                              await _book.add({
                                 "title": bookTitleController.text,
-                                "author": authorController.text,
-                                "sinopsis": sinopsisController.text
+                                "author": authorController.text
+                                //"sinopsis": sinopsisController.text
                               });
                               clearInputText();
                             }),
@@ -124,7 +122,7 @@ class BookPage extends StatelessWidget {
                   /// hanya get sekali saja jika menggunakan FutureBuilder
                   /*
                   FutureBuilder<QuerySnapshot>(
-                    future: _pengguna.get(),
+                    future: _book.get(),
                     builder: (buildContext, snapshot) {
                       return Column(
                         children: snapshot.data!.docs
@@ -139,24 +137,24 @@ class BookPage extends StatelessWidget {
                   // get secara realtime jikga menggunakan stream builder
                   StreamBuilder<QuerySnapshot>(
                     // contoh penggunaan srteam
-                    // _pengguna.orderBy('age', descending: true).snapshots()
-                    // _pengguna.where('age', isLessThan: 30).snapshots()
+                    // _book.orderBy('age', descending: true).snapshots()
+                    // _book.where('age', isLessThan: 30).snapshots()
                     stream:
-                        _pengguna.orderBy('title', descending: true).snapshots(),
+                        _book.orderBy('title', descending: true).snapshots(),
                     builder: (buildContext, snapshot) {
                       return Column(
                         children: snapshot.data.docs
                             .map((e) => BookCard(
                                   e.data()['title'],
                                   e.data()['auhtor'],
-                                  e.data()['sinopsis'],
+                                  //e.data()['sinopsis'],
                                   onUpdate: () {
-                                    _pengguna
+                                    _book
                                         .doc(e.id)
                                         .update({"author": authorController.text});
                                   },
                                   onDelete: () {
-                                    _pengguna.doc(e.id).delete();
+                                    _book.doc(e.id).delete();
                                   },
                                 ))
                             .toList(),

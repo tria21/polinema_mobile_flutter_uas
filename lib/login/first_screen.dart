@@ -1,5 +1,5 @@
-import 'package:uas/kategori_page.dart';
-import 'package:uas/book_page.dart';
+import 'package:uas/contoh_sederhana/kategori_page.dart';
+import 'package:uas/contoh_sederhana/book_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

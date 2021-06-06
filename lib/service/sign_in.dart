@@ -8,6 +8,7 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 String name;
 String email;
 String imageUrl;
+String uid;
 
 Future<String> signInWithGoogle() async {
   await Firebase.initializeApp();
@@ -18,6 +19,7 @@ Future<String> signInWithGoogle() async {
     accessToken: googleSignInAuthentication.accessToken,
     idToken: googleSignInAuthentication.idToken,
   );
+
   final UserCredential authResult =
       await _auth.signInWithCredential(credential);
   final User user = authResult.user;
@@ -26,46 +28,22 @@ Future<String> signInWithGoogle() async {
     assert(user.email != null);
     assert(user.displayName != null);
     assert(user.photoURL != null);
+    assert(user.uid != null);
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoURL;
+    uid = user.uid;
     // Only taking the first part of the name, i.e., First Name
     if (name.contains(" ")) {
       name = name.substring(0, name.indexOf(" "));
     }
+
     assert(!user.isAnonymous);
     assert(await user.getIdToken() != null);
     final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);
+
     print('signInWithGoogle succeeded: $user');
-    return '$user';
-  }
-  return null;
-}
-
-//membuat method signInWithEmailAndPassword
-Future<String> signInWithEmailAndPassword(String email, String password) async {
-  await Firebase.initializeApp();
-
-  UserCredential userAuth = (await _auth.signInWithEmailAndPassword(email: email, password: password));
-  User user = userAuth.user;
-
-  if(user != null) {
-    //checking if email and name is null
-    assert(user.email != null);
-
-    name = user.email;
-    email = user.email;
-    imageUrl = user.email;
-    //Only taking the first part of the name, i.e., First Name
-    if(name.contains(" ")) {
-      name = name.substring(0, name.indexOf("@"));
-    }
-    assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
-    final User currentUser = _auth.currentUser;
-    assert(user.uid == currentUser.uid);
-    print('signInWithEmail succeeded: $user');
     return '$user';
   }
   return null;

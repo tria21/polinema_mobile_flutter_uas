@@ -1,16 +1,16 @@
-import 'package:uas/kategori_card.dart';
+import 'package:uas/contoh_sederhana/kategori_card.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
 class KategoriPage extends StatelessWidget {
-  final TextEditingController titleController = TextEditingController();
+  final TextEditingController namaKategoriController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  CollectionReference _pengguna =
-      FirebaseFirestore.instance.collection('pengguna');
+  CollectionReference _kategori =
+      FirebaseFirestore.instance.collection('kategori');
 
   void clearInputText() {
-    titleController.text = "";
+    namaKategoriController.text = "";
     descriptionController.text = "";
   }
   
@@ -49,7 +49,7 @@ class KategoriPage extends StatelessWidget {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
-                              controller: titleController,
+                              controller: namaKategoriController,
                               decoration: InputDecoration(
                                   hintText: "Isi Nama Kategori",
                                   hintStyle: TextStyle(
@@ -69,7 +69,6 @@ class KategoriPage extends StatelessWidget {
                                       color: Colors.grey,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 16)),
-                              keyboardType: TextInputType.number,
                             ),
                           ],
                         ),
@@ -90,8 +89,8 @@ class KategoriPage extends StatelessWidget {
                             ),
                             onPressed: () async {
                               // TODO 1 ADD DATA HERE
-                              await _pengguna.add({
-                                "title": titleController.text,
+                              await _kategori.add({
+                                "namaKategori": namaKategoriController.text,
                                 "description": descriptionController.text
                               });
                               clearInputText();
@@ -107,7 +106,7 @@ class KategoriPage extends StatelessWidget {
                   /// hanya get sekali saja jika menggunakan FutureBuilder
                   /*
                   FutureBuilder<QuerySnapshot>(
-                    future: _pengguna.get(),
+                    future: _kategori.get(),
                     builder: (buildContext, snapshot) {
                       return Column(
                         children: snapshot.data!.docs
@@ -122,23 +121,23 @@ class KategoriPage extends StatelessWidget {
                   // get secara realtime jikga menggunakan stream builder
                   StreamBuilder<QuerySnapshot>(
                     // contoh penggunaan srteam
-                    // _pengguna.orderBy('age', descending: true).snapshots()
-                    // _pengguna.where('age', isLessThan: 30).snapshots()
+                    // _kategori.orderBy('age', descending: true).snapshots()
+                    // _kategori.where('age', isLessThan: 30).snapshots()
                     stream:
-                        _pengguna.orderBy('title', descending: true).snapshots(),
+                        _kategori.orderBy('namaKategori', descending: true).snapshots(),
                     builder: (buildContext, snapshot) {
                       return Column(
                         children: snapshot.data.docs
                             .map((e) => KategoriCard(
-                                  e.data()['title'],
+                                  e.data()['namaKategori'],
                                   e.data()['description'],
                                   onUpdate: () {
-                                    _pengguna
+                                    _kategori
                                         .doc(e.id)
                                         .update({"description": descriptionController.text});
                                   },
                                   onDelete: () {
-                                    _pengguna.doc(e.id).delete();
+                                    _kategori.doc(e.id).delete();
                                   },
                                 ))
                             .toList(),

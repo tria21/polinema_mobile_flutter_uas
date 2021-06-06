@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-class BookCard extends StatelessWidget {
-  final String title;
-  final String author;
-  final String sinopsis;
+class KategoriCard extends StatelessWidget {
+  final String namaKategori;
+  final String description;
   //// Pointer to Update Function
   final Function onUpdate;
   //// Pointer to Delete Function
   final Function onDelete;
 
-  BookCard(this.title, this.author, this.sinopsis, { this.onUpdate, this.onDelete});
+  KategoriCard(this.namaKategori, this.description, { this.onUpdate, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class BookCard extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
-                child: Text(title,
+                child: Text(namaKategori,
                         style: TextStyle(color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
@@ -36,15 +35,7 @@ class BookCard extends StatelessWidget {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
-                child: Text(author,
-                        style: TextStyle(color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                        ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: Text(sinopsis,
+                child: Text(description,
                         style: TextStyle(color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
@@ -66,7 +57,7 @@ class BookCard extends StatelessWidget {
                       color: Colors.white,
                     )),
                     onPressed: () {
-                       if (onUpdate != null) onUpdate();
+                      if (onUpdate != null) onUpdate();
                       //onUpdate!();
                     }),
               ),

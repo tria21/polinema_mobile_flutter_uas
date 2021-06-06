@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class KategoriCard extends StatelessWidget {
+class BookCard extends StatelessWidget {
   final String title;
-  final String description;
+  final String author;
+  //final String sinopsis;
   //// Pointer to Update Function
   final Function onUpdate;
   //// Pointer to Delete Function
   final Function onDelete;
 
-  KategoriCard(this.title, this.description, { this.onUpdate, this.onDelete});
+  BookCard(this.title, this.author, { this.onUpdate, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +36,20 @@ class KategoriCard extends StatelessWidget {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
-                child: Text(description,
+                child: Text(author,
                         style: TextStyle(color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
                         ),
               ),
+              // SizedBox(
+              //   width: MediaQuery.of(context).size.width * 0.5,
+              //   child: Text(sinopsis,
+              //           style: TextStyle(color: Colors.black,
+              //                     fontWeight: FontWeight.w600,
+              //                     fontSize: 16),
+              //           ),
+              // ),
             ],
           ),
           Row(
@@ -57,8 +66,8 @@ class KategoriCard extends StatelessWidget {
                       color: Colors.white,
                     )),
                     onPressed: () {
-                      if (onUpdate != null) onUpdate();
-                      //onUpdate!();
+                       //if (onUpdate != null) onUpdate();
+                      onUpdate();
                     }),
               ),
               SizedBox(
