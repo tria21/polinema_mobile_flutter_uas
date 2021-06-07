@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uas/database/kategori.dart';
 import 'package:uas/database/book.dart';
-import 'package:uas/pages/screen_note/dashboard.dart';
+import 'package:uas/pages/book/dashboard.dart';
 import 'package:uas/service/auth.dart';
 import 'package:uas/service/auth_email.dart';
 import 'package:uas/service/sign_in.dart';
@@ -129,7 +129,7 @@ Widget _registerButton(BuildContext context) {
                     Kategori.userUid = _auth.currentUser.uid;
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return DashboardNoteScreen();
+                      return DashboardBookScreen();
                     }));
                   }
                 });
@@ -242,7 +242,7 @@ Widget _registerButton(BuildContext context) {
               Book.userUid = _auth.currentUser.uid;
               Kategori.userUid = _auth.currentUser.uid;
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => new DashboardNoteScreen()));
+                  MaterialPageRoute(builder: (context) => new DashboardBookScreen()));
             } else {
               showDialog(
                   context: context,

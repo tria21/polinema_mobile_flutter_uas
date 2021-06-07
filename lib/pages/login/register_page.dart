@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uas/database/kategori.dart';
 import 'package:uas/database/book.dart';
-import 'package:uas/pages/screen_note/dashboard.dart';
+import 'package:uas/pages/book/dashboard.dart';
 import 'package:uas/service/auth.dart';
 import 'package:uas/service/auth_email.dart';
 import 'package:uas/pages/login/login_page.dart';
@@ -155,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Navigator.push(
                   context,
                   new MaterialPageRoute(
-                      builder: (context) => new DashboardNoteScreen()));
+                      builder: (context) => new DashboardBookScreen()));
             } else {
               showDialog(
                   context: context,

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uas/database/kategori.dart';
-import 'package:uas/pages/screen_category/edit_screen.dart';
+import 'package:uas/pages/kategori/edit_screen.dart';
 
 class CategoryList extends StatelessWidget {
   final kPrimaryColor = Colors.black;
