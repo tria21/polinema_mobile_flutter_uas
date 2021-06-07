@@ -79,9 +79,16 @@ class AddBookFormState extends State<AddBookForm> {
           child: ListView(
             physics: BouncingScrollPhysics(),
             children: <Widget>[
-              // SizedBox(
-              //   height: 30,
-              // ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child:Text(
+                  "Tambah Data Buku",
+                  style: TextStyle(fontSize: 25.0),
+                ),
+                margin: EdgeInsets.all(15),
+              ),
               SvgPicture.asset(
                 "icons/add_note.svg",
                 height: 150,

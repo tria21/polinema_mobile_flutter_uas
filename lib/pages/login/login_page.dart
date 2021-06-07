@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "LOGIN",
+            "LOGIN LIBRARY APPS",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           SizedBox(height: size.height * 0.03),
@@ -150,14 +150,14 @@ Widget _registerButton(BuildContext context) {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              width: size.width * 0.8,
-              decoration: BoxDecoration(
-                color: kPrimaryLightColor,
-                borderRadius: BorderRadius.circular(29),
-                border: Border.all(color: kPrimaryColor, width: 1),
-              ),
+              // margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.only(top: 20),
+              // width: size.width * 0.8,
+              // decoration: BoxDecoration(
+              //   color: kPrimaryLightColor,
+              //   borderRadius: BorderRadius.circular(29),
+              //   border: Border.all(color: kPrimaryColor, width: 1),
+              // ),
               child: TextFormField(
                 controller: _emailController,
                 focusNode: _emailFocusNode,
@@ -165,7 +165,7 @@ Widget _registerButton(BuildContext context) {
                 cursorColor: kPrimaryColor,
                 decoration: InputDecoration(
                   icon: Icon(Icons.people, color: kPrimaryColor),
-                  hintText: "Username",
+                  hintText: "Email",
                   border: InputBorder.none,
                 ),
                 validator: (value) {
@@ -179,14 +179,14 @@ Widget _registerButton(BuildContext context) {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              width: size.width * 0.8,
-              decoration: BoxDecoration(
-                color: kPrimaryLightColor,
-                borderRadius: BorderRadius.circular(29),
-                border: Border.all(color: kPrimaryColor, width:1),
-              ),
+              // margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.only(top: 20),
+              // width: size.width * 0.8,
+              // decoration: BoxDecoration(
+              //   color: kPrimaryLightColor,
+              //   borderRadius: BorderRadius.circular(29),
+              //   border: Border.all(color: kPrimaryColor, width:1),
+              // ),
               child: TextFormField(
                 controller: _passController,
                 focusNode: _passwordFocusNode,

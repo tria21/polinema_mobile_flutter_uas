@@ -31,6 +31,16 @@ class AddCategoryFormState extends State<AddCategoryForm> {
           child: ListView(
             physics: BouncingScrollPhysics(),
             children: <Widget>[
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child:Text(
+                  "Tambah Data Kategori",
+                  style: TextStyle(fontSize: 25.0),
+                ),
+                margin: EdgeInsets.all(15),
+              ),
               SizedBox(height: 30,),
               SvgPicture.asset(
             "icons/add_category.svg",

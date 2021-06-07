@@ -16,19 +16,19 @@ class MainDrawer extends StatelessWidget {
         children: <Widget>[
        ListTile(
         leading: CircleAvatar(
-          child: Icon(Icons.collections_bookmark, color: Colors.white),
+          child: Icon(Icons.account_circle, color: Colors.white),
           backgroundColor: Colors.black),
         title: Text("Library Apps"),
         subtitle: Text(_auth.currentUser.email),
       ),
       ListTile(
-          leading: Icon(Icons.home),
-          title: Text("Home"),
+          leading: Icon(Icons.library_books_rounded),
+          title: Text("Book"),
           onTap: () {
              Navigator.pushNamed(context, '/home');
           }),
       ListTile(
-        leading: Icon(Icons.category),
+        leading: Icon(Icons.category_outlined),
         title: Text("Kategori"),
         onTap: () {
            Navigator.pushNamed(context, '/kategori');

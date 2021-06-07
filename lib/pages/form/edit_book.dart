@@ -56,6 +56,16 @@ class EditBookForm extends StatefulWidget {
             physics: BouncingScrollPhysics(),
             children: <Widget>[
               SizedBox(
+                height: 10,
+              ),
+              Container(
+                child:Text(
+                  "Edit Data Buku",
+                  style: TextStyle(fontSize: 25.0),
+                ),
+                margin: EdgeInsets.all(15),
+              ),
+              SizedBox(
                 height: 30,
               ),
               SvgPicture.asset(

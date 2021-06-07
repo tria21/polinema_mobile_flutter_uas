@@ -77,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 cursorColor: kPrimaryColor,
                 decoration: InputDecoration(
                   icon: Icon(Icons.people, color: kPrimaryColor),
-                  hintText: "Username",
+                  hintText: "Email",
                   border: InputBorder.none,
                 ),
                 validator: (value) {
