@@ -51,7 +51,7 @@ class AddBookFormState extends State<AddBookForm> {
             ),
           ),
           SvgPicture.asset(
-            "icons/add_note.svg",
+            "icons/add_book.svg",
             height: 150,
           ),
           Padding(
@@ -133,7 +133,7 @@ class AddBookFormState extends State<AddBookForm> {
                     cursorColor: kPrimaryColor,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Title",
+                        labelText: "Judul Buku",
                         border: InputBorder.none),
                     validator: (value) {
                       if (value.isEmpty) {
@@ -159,7 +159,7 @@ class AddBookFormState extends State<AddBookForm> {
                     cursorColor: kPrimaryColor,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Author",
+                        labelText: "Penulis Buku",
                         border: InputBorder.none),
                     validator: (value) {
                       if (value.isEmpty) {
@@ -202,7 +202,7 @@ class AddBookFormState extends State<AddBookForm> {
                       width: MediaQuery.of(context).size.width - 20,
                       child: RawMaterialButton(
                           padding: EdgeInsets.symmetric(vertical: 20.0),
-                          child: Text("Add data",
+                          child: Text("Tambah Data",
                               style: TextStyle(
                                   color: kPrimaryLightColor, fontSize: 18.0)),
                           shape: RoundedRectangleBorder(

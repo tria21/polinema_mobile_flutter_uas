@@ -69,7 +69,7 @@ class AddCategoryFormState extends State<AddCategoryForm> {
                         cursorColor: kPrimaryColor,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                            labelText: "Category Name",
+                            labelText: "Nama Kategori Buku",
                             border: InputBorder.none),
                         validator: (value) {
                           if (value.isEmpty) {
@@ -97,7 +97,7 @@ class AddCategoryFormState extends State<AddCategoryForm> {
                         cursorColor: kPrimaryColor,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                            labelText: "Description",
+                            labelText: "Deskripsi Kategori",
                             border: InputBorder.none),
                         validator: (value) {
                           if (value.isEmpty) {
@@ -118,7 +118,7 @@ class AddCategoryFormState extends State<AddCategoryForm> {
                 width: MediaQuery.of(context).size.width - 20,
                 child: RawMaterialButton(
                     padding: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Text("Add data",
+                    child: Text("Tambah Data",
                         style: TextStyle(
                             color: kPrimaryLightColor, fontSize: 18.0)),
                     shape: RoundedRectangleBorder(

@@ -39,8 +39,8 @@ class _EditBookScreenState extends State<EditBookScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
-          title: Text("Book"),
+          backgroundColor: Color(0xff607Cbf),
+          title: Text("Edit Buku"),
         ),
         body: SafeArea(
           child: Padding(

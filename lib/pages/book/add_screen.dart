@@ -20,8 +20,8 @@ class AddBookScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
-          title: Text("Book List"),
+          backgroundColor: Color(0xff607Cbf),
+          title: Text("Tambah Buku"),
         ),
         body: SafeArea(
           child: Padding(

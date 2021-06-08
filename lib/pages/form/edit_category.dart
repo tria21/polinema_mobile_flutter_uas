@@ -81,7 +81,7 @@ class EditCategoryFormState extends State<EditCategoryForm> {
                     cursorColor: kPrimaryColor,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Category Name",
+                        labelText: "Nama Kategori Buku",
                         border: InputBorder.none),
                     validator: (value) {
                       if (value.isEmpty) {
@@ -109,7 +109,7 @@ class EditCategoryFormState extends State<EditCategoryForm> {
                     cursorColor: kPrimaryColor,
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Description",
+                        labelText: "Deskripsi Kategori",
                         border: InputBorder.none),
                     validator: (value) {
                       if (value.isEmpty) {

@@ -34,8 +34,8 @@ class _EditScreenState extends State<EditScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
-          title: Text("Category"),
+          backgroundColor: Color(0xff607Cbf),
+          title: Text("Edit Kategori"),
         ),
         body: SafeArea(
           child: Padding(

@@ -23,7 +23,7 @@ class MainDrawer extends StatelessWidget {
       ),
       ListTile(
           leading: Icon(Icons.library_books_rounded),
-          title: Text("Book"),
+          title: Text("Buku"),
           onTap: () {
              Navigator.pushNamed(context, '/home');
           }),

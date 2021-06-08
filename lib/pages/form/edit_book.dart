@@ -73,7 +73,7 @@ class EditBookForm extends StatefulWidget {
                 height: 30,
               ),
               SvgPicture.asset(
-                "icons/add_note.svg",
+                "icons/add_book.svg",
                 height: 150,
               ),
               Padding(
@@ -155,7 +155,7 @@ class EditBookForm extends StatefulWidget {
                         cursorColor: kPrimaryColor,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                            labelText: "Title",
+                            labelText: "Judul Buku",
                             border: InputBorder.none),
                         validator: (value) {
                           if (value.isEmpty) {
@@ -181,7 +181,7 @@ class EditBookForm extends StatefulWidget {
                         cursorColor: kPrimaryColor,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                            labelText: "Author",
+                            labelText: "Penulis Buku",
                             border: InputBorder.none),
                         validator: (value) {
                           if (value.isEmpty) {
@@ -225,7 +225,7 @@ class EditBookForm extends StatefulWidget {
                     width: MediaQuery.of(context).size.width - 20,
                     child: RawMaterialButton(
                         padding: EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text("Update data",
+                        child: Text("Update Data",
                             style: TextStyle(
                                 color: kPrimaryLightColor, fontSize: 18.0)),
                         shape: RoundedRectangleBorder(

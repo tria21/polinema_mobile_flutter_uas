@@ -17,8 +17,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
      backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
-          title: Text("Category"),
+          backgroundColor: Color(0xff607Cbf),
+          title: Text("Kategori"),
         ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -28,7 +28,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           );
         },
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xff607Cbf),
         child: Icon(
           Icons.add,
           color: Colors.white,
