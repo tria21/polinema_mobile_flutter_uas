@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:uas/database/book.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final CollectionReference _mainCollection = _firestore.collection('books');
@@ -12,10 +13,6 @@ class Kategori {
   }) async {
     DocumentReference documentReferencer =
         _mainCollection.doc(userUid).collection('categorys').doc();
-
-    //setdata
-    // DocumentReference documentReferencer =
-    //     _mainCollection.doc('categorys');
 
     Map<String, dynamic> data = <String, dynamic>{
       "namaKategori": namaKategori,

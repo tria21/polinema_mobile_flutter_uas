@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uas/database/book.dart';
+import 'package:uas/database/kategori.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EditBookForm extends StatefulWidget {
   final FocusNode focusCategory;
@@ -36,6 +38,7 @@ class EditBookForm extends StatefulWidget {
   TextEditingController sinopsisController = TextEditingController();
   final kPrimaryColor = Colors.black;
   final kPrimaryLightColor = Colors.white;
+  var pilihKategori;
   @override
   void initState() {
     categoryController =
@@ -62,6 +65,7 @@ class EditBookForm extends StatefulWidget {
               padding: EdgeInsets.all(15),
                 child:Text(
                   "Edit Data Buku",
+                textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 25.0),
                 ),
               ),
@@ -87,24 +91,53 @@ class EditBookForm extends StatefulWidget {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: kPrimaryColor, width: 1),
                       ),
-                      child: TextFormField(
-                        controller: categoryController,
-                        focusNode: widget.focusCategory,
-                        keyboardType: TextInputType.text,
-                        cursorColor: kPrimaryColor,
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                            labelText: "Category",
-                            border: InputBorder.none),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please fill this section';
+                      child: StreamBuilder<QuerySnapshot>(
+                      stream: Kategori.readItems(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          const Text("Loading ...");
+                        } else {
+                          List<DropdownMenuItem> currencyCategorys = [];
+                          for (int i = 0; i < snapshot.data.docs.length; i++) {
+                            var snap = snapshot.data.docs[i].data();
+                            //String docId = snapshot.data.docs[i].id;
+                            String name = snap['namaKategori'];
+                            currencyCategorys.add(DropdownMenuItem(
+                              child: Text(name),
+                              value: "${name}",
+                            ));
                           }
-                          return null;
-                        },
-                        maxLines: 1,
-                      ),
-                    ),
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              DropdownButton(
+                                focusNode: widget.focusCategory,
+                                items: currencyCategorys,
+                                onChanged: (currencyValue) {
+                                  final snackBar = SnackBar(
+                                    content: Text(
+                                      'Kategori Yang Dipilih $currencyValue',
+                                      style:
+                                          TextStyle(color: kPrimaryLightColor),
+                                    ),
+                                  );
+                                  Scaffold.of(context).showSnackBar(snackBar);
+                                  setState(() {
+                                    pilihKategori = currencyValue;
+                                  });
+                                },
+                                value: pilihKategori,
+                                isExpanded: false,
+                                hint: new Text(
+                                  "Pilih Kategori Buku",
+                                  style: TextStyle(color: kPrimaryColor),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+                      },
+                    )),
                     SizedBox(
                       height: 10.0,
                     ),
@@ -192,13 +225,13 @@ class EditBookForm extends StatefulWidget {
                     width: MediaQuery.of(context).size.width - 20,
                     child: RawMaterialButton(
                         padding: EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text("Edit data",
+                        child: Text("Update data",
                             style: TextStyle(
                                 color: kPrimaryLightColor, fontSize: 18.0)),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
+                            borderRadius: BorderRadius.circular(10.0)),
                         elevation: 5.0,
-                        fillColor: kPrimaryColor,
+                        fillColor: Color(0xff607Cbf),
                         onPressed: () async {
                           await Book.updateContent(
                             docId: widget.documentId,

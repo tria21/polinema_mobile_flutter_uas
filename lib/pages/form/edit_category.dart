@@ -48,6 +48,7 @@ class EditCategoryFormState extends State<EditCategoryForm> {
               padding: EdgeInsets.all(15),
                 child:Text(
                   "Edit Data Kategori",
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 25.0),
                 ),
               ),
@@ -135,9 +136,9 @@ class EditCategoryFormState extends State<EditCategoryForm> {
                         style: TextStyle(
                             color: kPrimaryLightColor, fontSize: 18.0)),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0)),
+                        borderRadius: BorderRadius.circular(10.0)),
                     elevation: 5.0,
-                    fillColor: kPrimaryColor,
+                    fillColor: Color(0xff607Cbf),
                     onPressed: () async {
                       await Kategori.updateItem(
                           docId: widget.documentId,
