@@ -59,11 +59,11 @@ class EditBookForm extends StatefulWidget {
                 height: 10,
               ),
               Container(
+              padding: EdgeInsets.all(15),
                 child:Text(
                   "Edit Data Buku",
                   style: TextStyle(fontSize: 25.0),
                 ),
-                margin: EdgeInsets.all(15),
               ),
               SizedBox(
                 height: 30,

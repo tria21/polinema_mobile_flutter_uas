@@ -20,9 +20,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Library Apps',
-      //home: 
-      //NotePage(),
-      //KategoriPage()
       initialRoute: '/',
       routes: {
         '/': (context) => LoginPage(),

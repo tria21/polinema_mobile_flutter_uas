@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           Text(
             "LOGIN LIBRARY APPS",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
           ),
           SizedBox(height: size.height * 0.03),
           SvgPicture.asset(
@@ -63,7 +63,8 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(width: 20),
               Text(
                 "OR",
-                style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                    color: kPrimaryColor, fontWeight: FontWeight.w700),
               ),
               SizedBox(width: 20),
               Expanded(
@@ -83,64 +84,109 @@ class _LoginPageState extends State<LoginPage> {
     ));
   }
 
-Widget _registerButton(BuildContext context) {
+  Widget _registerButton(BuildContext context) {
     return Padding(
-            padding: const EdgeInsets.only(left: 10, top: 10),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  "Don’t have account ?",
-                  style: TextStyle(color: kPrimaryColor, fontSize: 15),
-                ),
-                SizedBox(height: 5),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegisterPage()));
-                  },
-                  child: Text(
-                    "Register here",
-                    style: TextStyle(
-                        color: kPrimaryColor, fontWeight: FontWeight.w700, fontSize: 16),
-                  ),
-                ),
-              ],
+      padding: const EdgeInsets.only(left: 10, top: 10),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            "Don’t have account ?",
+            style: TextStyle(color: kPrimaryColor, fontSize: 15),
+          ),
+          SizedBox(height: 5),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RegisterPage()));
+            },
+            child: Text(
+              "Register here",
+              style: TextStyle(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16),
             ),
-            );
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _loginWithGoogle(Size size, BuildContext context) {
-    return Container(
-          margin: EdgeInsets.symmetric(vertical: 4),
-          width: size.width * 0.8,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(29),
-            // ignore: deprecated_member_use
-            child: FlatButton(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-              color: kPrimaryColor,
-              onPressed: () {
-                signInWithGoogle().then((result) {
-                  if (result != null) {
-                    Book.userUid = _auth.currentUser.uid;
-                    Kategori.userUid = _auth.currentUser.uid;
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return DashboardBookScreen();
-                    }));
-                  }
-                });
-              },
-              child: Text(
-                "Sign in With Google",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 30),
+      child: OutlineButton(
+        splashColor: Colors.grey,
+        onPressed: () {
+            signInWithGoogle().then((result) {
+              if (result != null) {
+                Book.userUid = _auth.currentUser.uid;
+                Kategori.userUid = _auth.currentUser.uid;
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return DashboardBookScreen();
+                  },
+                ),
+              );
+            }
+          });
+        },
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        highlightElevation: 0,
+        borderSide: BorderSide(color: Colors.grey),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image(
+                  image: NetworkImage( //menampilkan gambar google
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png'),
+                  height: 20.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  'Sign in with Google',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey,
+                  ),
+                ),
+              )
+            ],
           ),
-        );
+        ),
+      ),
+    );
+    // return Container(
+    //   margin: EdgeInsets.symmetric(vertical: 4),
+    //   width: size.width * 0.8,
+    //   child: ClipRRect(
+    //     borderRadius: BorderRadius.circular(29),
+    //     // ignore: deprecated_member_use
+    //     child: FlatButton(
+    //       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+    //       color: kPrimaryColor,
+    //       onPressed: () {
+    //         signInWithGoogle().then((result) {
+    //           if (result != null) {
+    //             Book.userUid = _auth.currentUser.uid;
+    //             Kategori.userUid = _auth.currentUser.uid;
+    //             Navigator.of(context)
+    //                 .push(MaterialPageRoute(builder: (context) {
+    //               return DashboardBookScreen();
+    //             }));
+    //           }
+    //         });
+    //       },
+    //       child: Text(
+    //         "Sign in With Google",
+    //         style: TextStyle(color: Colors.white),
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 
   Widget _form() {
@@ -225,45 +271,46 @@ Widget _registerButton(BuildContext context) {
   }
 
   Widget _loginWithEmail() {
-    Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      width: size.width * 0.8,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(29),
-        // ignore: deprecated_member_use
-        child: FlatButton(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-          color: kPrimaryColor,
-          onPressed: () async {
-            SignInSignUpResult result = await AuthService.signInWithEmail(
-                email: _emailController.text, pass: _passController.text);
-            if (result.user != null) {
-              Book.userUid = _auth.currentUser.uid;
-              Kategori.userUid = _auth.currentUser.uid;
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => new DashboardBookScreen()));
-            } else {
-              showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                          title: Text("Error"),
-                          content: Text(result.message),
-                          actions: <Widget>[
-                            // ignore: deprecated_member_use
-                            FlatButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text("OK"))
-                          ]));
-            }
-          },
-          child: Text(
-            "Login",
-            style: TextStyle(color: Colors.white),
-          ),
+      padding: EdgeInsets.symmetric(vertical: 30),
+      width: double.infinity,
+      child: RaisedButton(
+        onPressed: () async {
+          SignInSignUpResult result = await AuthService.signInWithEmail(
+              email: _emailController.text, pass: _passController.text);
+          if (result.user != null) {
+            Book.userUid = _auth.currentUser.uid;
+            Kategori.userUid = _auth.currentUser.uid;
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => new DashboardBookScreen()));
+          } else {
+            showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                        title: Text("Error"),
+                        content: Text(result.message),
+                        actions: <Widget>[
+                          // ignore: deprecated_member_use
+                          FlatButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("OK"))
+                        ]));
+          }
+        },
+        child: Text(
+          "Login",
+          style: TextStyle(fontSize: 15, color: Colors.white),
         ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        color: Color(0xff607Cbf),
+        elevation: 0,
+        padding: EdgeInsets.symmetric(vertical: 16),
       ),
     );
   }

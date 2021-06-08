@@ -83,11 +83,11 @@ class AddBookFormState extends State<AddBookForm> {
                 height: 10,
               ),
               Container(
+              padding: EdgeInsets.all(15),
                 child:Text(
                   "Tambah Data Buku",
                   style: TextStyle(fontSize: 25.0),
                 ),
-                margin: EdgeInsets.all(15),
               ),
               SvgPicture.asset(
                 "icons/add_note.svg",

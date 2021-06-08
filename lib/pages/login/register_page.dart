@@ -39,8 +39,8 @@ class _RegisterPageState extends State<RegisterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "REGISTER",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              "REGISTER LIBRARY APPS",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
             ),
             SizedBox(height: size.height * 0.03),
             SvgPicture.asset(
@@ -63,14 +63,14 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              width: size.width * 0.8,
-              decoration: BoxDecoration(
-                color: kPrimaryLightColor,
-                borderRadius: BorderRadius.circular(29),
-                border: Border.all(color: kPrimaryColor, width: 1),
-              ),
+              // margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.only(top: 20),
+              // width: size.width * 0.8,
+              // decoration: BoxDecoration(
+              //   color: kPrimaryLightColor,
+              //   borderRadius: BorderRadius.circular(29),
+              //   border: Border.all(color: kPrimaryColor, width: 1),
+              // ),
               child: TextFormField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -91,14 +91,14 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              width: size.width * 0.8,
-              decoration: BoxDecoration(
-                color: kPrimaryLightColor,
-                borderRadius: BorderRadius.circular(29),
-                border: Border.all(color: kPrimaryColor, width: 1),
-              ),
+              // margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.only(top: 20),
+              // width: size.width * 0.8,
+              // decoration: BoxDecoration(
+              //   color: kPrimaryLightColor,
+              //   borderRadius: BorderRadius.circular(29),
+              //   border: Border.all(color: kPrimaryColor, width: 1),
+              // ),
               child: TextFormField(
                 controller: _passController,
                 obscureText: _isHidePass,
@@ -138,14 +138,17 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _registerButton() {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      width: size.width * 0.8,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(29),
-        // ignore: deprecated_member_use
-        child: FlatButton(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-          color: kPrimaryColor,
+      padding: EdgeInsets.symmetric(vertical: 30),
+      width: double.infinity,
+      child: RaisedButton(
+      // margin: EdgeInsets.symmetric(vertical: 10),
+      // width: size.width * 0.8,
+      // child: ClipRRect(
+      //   borderRadius: BorderRadius.circular(8),
+      //   // ignore: deprecated_member_use
+      //   child: FlatButton(
+      //     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+      //     color: Color(0xff607Cbf),
           onPressed: () async {
             SignInSignUpResult result = await AuthService.createUser(
                 email: _emailController.text, pass: _passController.text);
@@ -176,8 +179,14 @@ class _RegisterPageState extends State<RegisterPage> {
             "Register",
             style: TextStyle(color: Colors.white),
           ),
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
         ),
-      ),
+        color: Color(0xff607Cbf),
+        elevation: 0,
+        padding: EdgeInsets.symmetric(vertical: 16),
+        ),
+      //),
     );
   }
 

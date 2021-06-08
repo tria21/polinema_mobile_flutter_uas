@@ -35,11 +35,11 @@ class AddCategoryFormState extends State<AddCategoryForm> {
                 height: 10,
               ),
               Container(
+              padding: EdgeInsets.all(15),
                 child:Text(
                   "Tambah Data Kategori",
                   style: TextStyle(fontSize: 25.0),
                 ),
-                margin: EdgeInsets.all(15),
               ),
               SizedBox(height: 30,),
               SvgPicture.asset(

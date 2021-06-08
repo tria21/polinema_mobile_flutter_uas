@@ -45,11 +45,11 @@ class EditCategoryFormState extends State<EditCategoryForm> {
                 height: 10,
               ),
               Container(
+              padding: EdgeInsets.all(15),
                 child:Text(
                   "Edit Data Kategori",
                   style: TextStyle(fontSize: 25.0),
                 ),
-                margin: EdgeInsets.all(15),
               ),
           SizedBox(
             height: 30,
