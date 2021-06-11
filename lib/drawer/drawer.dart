@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:uas/service/sign_in.dart';
+import 'package:uas/auth/sign_in.dart';
 import 'package:uas/pages/login/login_page.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -25,7 +25,7 @@ class MainDrawer extends StatelessWidget {
           leading: Icon(Icons.library_books_rounded),
           title: Text("Buku"),
           onTap: () {
-             Navigator.pushNamed(context, '/home');
+             Navigator.pushNamed(context, '/buku');
           }),
       ListTile(
         leading: Icon(Icons.category_outlined),

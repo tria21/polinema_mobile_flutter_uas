@@ -4,9 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:uas/database/kategori.dart';
 import 'package:uas/database/book.dart';
 import 'package:uas/pages/book/dashboard.dart';
-import 'package:uas/service/auth.dart';
-import 'package:uas/service/auth_email.dart';
-import 'package:uas/service/sign_in.dart';
+import 'package:uas/auth/auth.dart';
+import 'package:uas/auth/auth_email.dart';
+import 'package:uas/auth/sign_in.dart';
 import 'package:uas/pages/login/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -159,34 +159,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-    // return Container(
-    //   margin: EdgeInsets.symmetric(vertical: 4),
-    //   width: size.width * 0.8,
-    //   child: ClipRRect(
-    //     borderRadius: BorderRadius.circular(29),
-    //     // ignore: deprecated_member_use
-    //     child: FlatButton(
-    //       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-    //       color: kPrimaryColor,
-    //       onPressed: () {
-    //         signInWithGoogle().then((result) {
-    //           if (result != null) {
-    //             Book.userUid = _auth.currentUser.uid;
-    //             Kategori.userUid = _auth.currentUser.uid;
-    //             Navigator.of(context)
-    //                 .push(MaterialPageRoute(builder: (context) {
-    //               return DashboardBookScreen();
-    //             }));
-    //           }
-    //         });
-    //       },
-    //       child: Text(
-    //         "Sign in With Google",
-    //         style: TextStyle(color: Colors.white),
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 
   Widget _form() {
@@ -196,14 +168,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: <Widget>[
             Container(
-              // margin: EdgeInsets.symmetric(vertical: 10),
-              padding: EdgeInsets.only(top: 20),
-              // width: size.width * 0.8,
-              // decoration: BoxDecoration(
-              //   color: kPrimaryLightColor,
-              //   borderRadius: BorderRadius.circular(29),
-              //   border: Border.all(color: kPrimaryColor, width: 1),
-              // ),
+                padding: EdgeInsets.only(top: 20),
               child: TextFormField(
                 controller: _emailController,
                 focusNode: _emailFocusNode,
@@ -225,14 +190,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              // margin: EdgeInsets.symmetric(vertical: 10),
               padding: EdgeInsets.only(top: 20),
-              // width: size.width * 0.8,
-              // decoration: BoxDecoration(
-              //   color: kPrimaryLightColor,
-              //   borderRadius: BorderRadius.circular(29),
-              //   border: Border.all(color: kPrimaryColor, width:1),
-              // ),
               child: TextFormField(
                 controller: _passController,
                 focusNode: _passwordFocusNode,

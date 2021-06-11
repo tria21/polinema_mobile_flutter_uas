@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginPage(),
-        '/home': (context) => DashboardBookScreen(),
+        '/buku': (context) => DashboardBookScreen(),
         '/kategori': (context) => DashboardScreen(),
       },
     );

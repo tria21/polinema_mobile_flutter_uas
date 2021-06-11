@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uas/database/kategori.dart';
 import 'package:uas/database/book.dart';
 import 'package:uas/pages/book/dashboard.dart';
-import 'package:uas/service/auth.dart';
-import 'package:uas/service/auth_email.dart';
+import 'package:uas/auth/auth.dart';
+import 'package:uas/auth/auth_email.dart';
 import 'package:uas/pages/login/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -91,14 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Container(
-              // margin: EdgeInsets.symmetric(vertical: 10),
               padding: EdgeInsets.only(top: 20),
-              // width: size.width * 0.8,
-              // decoration: BoxDecoration(
-              //   color: kPrimaryLightColor,
-              //   borderRadius: BorderRadius.circular(29),
-              //   border: Border.all(color: kPrimaryColor, width: 1),
-              // ),
               child: TextFormField(
                 controller: _passController,
                 obscureText: _isHidePass,
@@ -141,14 +134,6 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: EdgeInsets.symmetric(vertical: 30),
       width: double.infinity,
       child: RaisedButton(
-      // margin: EdgeInsets.symmetric(vertical: 10),
-      // width: size.width * 0.8,
-      // child: ClipRRect(
-      //   borderRadius: BorderRadius.circular(8),
-      //   // ignore: deprecated_member_use
-      //   child: FlatButton(
-      //     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-      //     color: Color(0xff607Cbf),
           onPressed: () async {
             SignInSignUpResult result = await AuthService.createUser(
                 email: _emailController.text, pass: _passController.text);

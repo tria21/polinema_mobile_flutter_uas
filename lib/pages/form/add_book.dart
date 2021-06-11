@@ -34,7 +34,6 @@ class AddBookFormState extends State<AddBookForm> {
 
   @override
   Widget build(BuildContext context) {
-    //Size size = MediaQuery.of(context).size;
     return Form(
       key: _formBookKey,
       child: ListView(
@@ -78,7 +77,6 @@ class AddBookFormState extends State<AddBookForm> {
                           List<DropdownMenuItem> currencyCategorys = [];
                           for (int i = 0; i < snapshot.data.docs.length; i++) {
                             var snap = snapshot.data.docs[i].data();
-                            //String docId = snapshot.data.docs[i].id;
                             String name = snap['namaKategori'];
                             currencyCategorys.add(DropdownMenuItem(
                               child: Text(name),

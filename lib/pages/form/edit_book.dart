@@ -26,6 +26,7 @@ class EditBookForm extends StatefulWidget {
     this.currentSinopsis,
     this.documentId,
   });
+  
   @override
   EditBookFormState createState() => EditBookFormState();
   }
@@ -39,6 +40,7 @@ class EditBookForm extends StatefulWidget {
   final kPrimaryColor = Colors.black;
   final kPrimaryLightColor = Colors.white;
   var pilihKategori;
+
   @override
   void initState() {
     categoryController =
@@ -100,7 +102,6 @@ class EditBookForm extends StatefulWidget {
                           List<DropdownMenuItem> currencyCategorys = [];
                           for (int i = 0; i < snapshot.data.docs.length; i++) {
                             var snap = snapshot.data.docs[i].data();
-                            //String docId = snapshot.data.docs[i].id;
                             String name = snap['namaKategori'];
                             currencyCategorys.add(DropdownMenuItem(
                               child: Text(name),

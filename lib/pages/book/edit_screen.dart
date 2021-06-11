@@ -9,8 +9,8 @@ class EditBookScreen extends StatefulWidget {
   final String documentId;
 
   EditBookScreen({
-     this.currentCategory,
-     this.currentTitle,
+    this.currentCategory,
+    this.currentTitle,
     this.currentAuthor,
     this.currentSinopsis,
     this.documentId,
